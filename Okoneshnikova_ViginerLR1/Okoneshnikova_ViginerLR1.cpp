@@ -8,23 +8,23 @@ void Viginer(string inf, string outf, int action)
     ifstream fin;
     ofstream fout;
     string keyword;
-    char s, c;
+    char original, result;
     int i = 0;
     cout << endl << "Введите ключевое слово: ";
     cin >> keyword;
     fin.open(inf + ".txt", ios::binary);
     fout.open(outf + ".txt", ios::binary);
-        while (fin.get(s)) 
+        while (fin.get(original))
         {
             if (action == 1) 
             {
-                c = (s) + keyword[i % keyword.size()];
-                fout << c;
+                result = (original) + keyword[i % keyword.size()];
+                fout << result;
             }
             else 
             {
-                c = s - keyword[i % keyword.size()];
-                fout << c;
+                result = original - keyword[i % keyword.size()];
+                fout << result;
             }
             i++;
         }
@@ -59,12 +59,8 @@ int main()
         case 1:
         {
             cout << endl << "Введите имя файла для зашифровки: ";
-            /*cin.ignore();
-            getline(cin, inf); */
             cin >> inf;
             cout << endl << "Введите имя файла для вывода зашифровки: ";
-            /*cin.ignore();
-            getline(cin, outf);*/
             cin >> outf;
             Viginer(inf, outf, action);
             cout << endl << "Шифрование завершено" << endl;
@@ -73,12 +69,8 @@ int main()
         case 2: 
         {
             cout << endl << "Введите имя файла для дешифровки: ";
-            /*cin.ignore();
-            getline(cin, inf);*/
             cin >> inf;
             cout << endl << "Введите имя файла для вывода дешифровки: ";
-            /*cin.ignore();
-            getline(cin, outf);*/
             cin >> outf;
             Viginer(inf, outf, action);
             cout << endl << "Дешифрование завершено" << endl;
